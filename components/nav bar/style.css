@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* CSS for the sidebar */
+.side-nav {
+  background-image: linear-gradient(145deg,rgba(70, 162, 216, 0.4), rgba(85, 215, 211, 0.4) );
+  width: 250px;
+  top: 18vh;
+  left: 20px;
+  bottom: 10px;
+  position: fixed;
+  padding: 30px 0 30px 15px;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+ 
+  overflow: hidden;
+  z-index: 1000;
+  border-radius: 12px; 
+
+
+  
+   
+}
+  
+  
+
+
+
+
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-nav ul li {
+  margin: 0;
+}
+
+.side-nav ul li a {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  justify-content:center;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  padding: 15px 30px 15px 10px;
+  
+}
+
+.side-nav ul li a:hover{
+  color: rgb(8, 8, 48);
+  background-color:transparent;
+  border: 3px solid white;
+  border-right: none;
+  border-top-left-radius:12px ;
+  border-bottom-left-radius:12px ;
+}
+
+.side-nav ul li a:hover i{
+  color: rgb(8, 8, 48);
+}
+
+.active{
+  color: rgb(8, 8, 48);
+  background-color:transparent;
+  border: 3px solid white;
+  border-right: none;
+  border-top-left-radius:12px ;
+  border-bottom-left-radius:12px ;
+}
+
+.side-nav li a i {
+  font-size: 30px;
+  margin-right: 0;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+

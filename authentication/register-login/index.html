@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Login</title>
+  <link rel="stylesheet" href="/school-management/authentication/styles/style.css">
+  <link rel="stylesheet" href="/school-management/authentication/prompt/style.css">
+</head>
+<body>
+
+
+  <div id="modalOverlay" >
+
+  </div>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <form action="" class="sign-in-form">
+
+          <div class="sign-head">
+            <div class="logo">
+              <img class="school-logo" src="/school-management/assets/oceanland-academy-high-resolution-logo-transparent.png">
+            </div>
+            <div class="title">
+              <h2 class="title">Sign In</h2>
+            </div>
+           
+          </div>
+          
+          <div class="input-field">
+            <i class='bx bxs-user'></i>
+            <input type="text" name="text" id="signInName" placeholder="Full Name">
+          </div>
+
+          <div class="input-field">
+            <i class='bx bxs-lock-alt'></i>
+            <input type="password" name="password" id="signInPassword" placeholder="Enter Password">
+          </div>
+
+          <div class="btn-container">
+            <input type="submit" value="Sign In" class="btn">
+          </div>
+        
+         <p class="social-text">Or sign in with Social platform</p>
+
+         <div class="social-media">
+          <a href="" class="social-icon">
+            <i class="fa-brands fa-facebook-f"></i>
+           </a>
+  
+           <a href="#" class="social-icon">
+            <i class="fa-brands fa-x-twitter"></i>
+           </a>
+  
+           <a href="#" class="social-icon">
+            <i class="fa-brands fa-google"></i>
+           </a>
+  
+           <a href="#"class="social-icon">
+            <i class="fa-brands fa-linkedin-in"></i>
+           </a>
+         </div>
+
+       
+          
+
+        </form>
+
+
+
+        <form action="" class="sign-up-form">
+          <div class="logo">
+            <img class="school-logo" src="/school-management/assets/oceanland-academy-high-resolution-logo-transparent.png">
+          </div>
+          <div class="title">
+            <h2 class="title">Sign Up</h2>
+          </div>
+          
+          <div class="input-field">
+            <i class='bx bxs-user'></i>
+            <input type="text" name="text" id="signUpUsername" placeholder="Full Name">
+          </div>
+
+          <div class="input-field">
+            <i class="fa-solid fa-circle-chevron-down"></i>
+            <select id="role" name="role" required>
+                <option class="select-tag" >Choose a role</option>
+                <option value="student">Student</option>
+                <option value="staff">Staff</option>
+                <option id="admin" value="admin">Admin</option>
+            </select>
+          </div>
+          
+
+
+          <div class="input-field">
+            <i class='bx bxs-envelope'></i>
+            <input type="text" name="text" id="signUpEmail" placeholder="example@st.oceanland.edu.gh">
+          </div>
+
+          
+
+          <div class="input-field">
+            <i class='bx bxs-lock-alt'></i>
+            <input type="password" name="password" id="signUpPassword" placeholder="Enter Password">
+          </div>
+
+          <div class="input-field">
+            <i class='bx bxs-lock-alt'></i>
+            <input type="password" name="password" id="signUpConfirmPassword" placeholder="Confirm Password">
+          </div>
+          <div class="btn-container">
+            <input type="submit" value="Sign Up" class="btn">
+          </div>
+          
+         
+          <p class="social-text">Or sign up with Social platform</p>
+
+         <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="fa-brands fa-facebook-f"></i>
+           </a>
+  
+           <a href="#" class="social-icon">
+            <i class="fa-brands fa-x-twitter"></i>
+           </a>
+  
+           <a href="#" class="social-icon">
+            <i class="fa-brands fa-google"></i>
+           </a>
+  
+           <a href="#"class="social-icon">
+            <i class="fa-brands fa-linkedin-in"></i>
+           </a>
+         </div>
+
+       
+          
+
+        </form>
+        
+      </div>
+    </div>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>Start Your Journey with Us—Sign Up Now!</h3>
+          <p> If you're new here, please sign up and become part of our growing community! By registering, you'll gain access to all the resources, programs, and opportunities we offer to help you succeed. Whether you're excited to start your academic journey or eager to join our extracurricular activities, signing up is the first step. Don’t miss out—register today and get ready to make the most of your time with us! We are excited to have you with us!</p>
+          <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+        </div>
+        
+      </div>
+
+      <div class="panel right-panel">
+        <div class="content">
+          <h3> Sign In to Your Account</h3>
+          <p >If you’re returning to continue your journey with us, please sign in to your account. This is your gateway to access important resources, connect with fellow students, and stay updated on school activities and announcements. Your journey is important to us, and signing in ensures you won’t miss any exciting opportunities. Let’s get started and make the most of your experience!</p>
+          <button class="btn transparent" id="sign-in-btn">Sign In</button>
+        </div>
+       
+      </div>
+
+    </div>
+  </div>
+  <script src="/school-management/authentication/register-login/script.js"></script>
+  <script src="/school-management/authentication/prompt/script.js"></script>
+</body>
+</html>
