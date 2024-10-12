@@ -18,6 +18,7 @@ fetch('/school-management/components/header/index.html')
                 // Update the content of username and role elements
                 usernameElement.textContent = userInfo.username;
                 roleElement.textContent = userInfo.role;
+                document.getElementById("admName").textContent = userInfo.username;
             } else {
                 console.error("Username or role elements not found in the DOM.");
             }
@@ -27,92 +28,74 @@ fetch('/school-management/components/header/index.html')
     })
     .catch(error => console.error('Error loading HTML:', error));
 
+// Fetch navbar HTML and inject it into the page
+fetch('/school-management/components/nav bar/index-admin.html')
+    .then(response => response.text())  // Parse the response as plain text
+    .then(data => {
+        // Inject the fetched HTML content into the target div
+        document.getElementById('navbar').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading HTML:', error));
 
+// Logout logic
+document.addEventListener('DOMContentLoaded', function () {
+    // Attach an event listener to the logout button
+    const logOutButton = document.getElementById('logOut');
+    if (logOutButton) {
+        logOutButton.addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevent the default link behavior
+            
+            // Remove all session-related localStorage data
+            localStorage.removeItem('useinfo');  // Assuming userInfo holds session data
 
-
-
-fetch('/school-management/components/nav bar/index -admin.html')
-.then(response => response.text())  // Parse the response as plain text
-.then(data => {
-    // Inject the fetched HTML content into the target div
-    document.getElementById('navbar').innerHTML = data;
-})
-.catch(error => console.error('Error loading HTML:', error));
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Attach an event listener to the logout button
-  const logOutButton = document.getElementById('logOut');
-  if (logOutButton) {
-    logOutButton.addEventListener('click', function(event) {
-      event.preventDefault();  // Prevent the default link behavior
-
-      // Clear the userInfo from localStorage
-      localStorage.removeItem('userInfo');
-
-      // Redirect to the login page after logging out
-      window.location.href = "/school-management/authentication/register-login/index.html";
-    });
-  } else {
-    console.error("Logout button not found in the DOM.");
-  }
+            // Redirect to the login page after logging out
+            window.location.href = "/school-management/authentication/register-login/index.html";
+        });
+    } else {
+        console.error("Logout button not found in the DOM.");
+    }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Function to count logged-in users by role
+// Function to count logged-in users
 function countLoggedUsers() {
-  let studentCount = 0;
-  let adminCount = 0;
-  let staffCount = 0;
+    let studentCount = 0;
+    let adminCount = 0;
+    let staffCount = 0;
 
-  // Loop through localStorage to count roles
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const user = JSON.parse(localStorage.getItem(key));
+    // Loop through localStorage to count roles only from keys that start with "user_"
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
 
-    if (user && user.role) {
-      switch (user.role) {
-        case "student":
-          studentCount++;
-          break;
-        case "admin":
-          adminCount++;
-          break;
-        case "staff":
-          staffCount++;
-          break;
-      }
+        // Only process keys that start with "user_"
+        if (!key.startsWith("user")) {
+            const user = JSON.parse(localStorage.getItem(key));
+
+            if (user && user.role) {
+                switch (user.role) {
+                    case "student":
+                        studentCount++;
+                        break;
+                    case "admin":
+                        adminCount++;
+                        break;
+                    case "staff":
+                        staffCount++;
+                        break;
+                }
+            }
+        }
     }
-  }
 
-  // Display the counts in the respective tags
-  document.getElementById("studentCount").textContent = studentCount;
-  document.getElementById("adminCount").textContent = adminCount;
-  document.getElementById("staffCount").textContent = staffCount;
+    // Display the counts in the respective tags
+    document.getElementById("studentCount").textContent = studentCount;
+    document.getElementById("adminCount").textContent = adminCount;
+    document.getElementById("staffCount").textContent = staffCount;
 }
 
 // Call the function when the page loads
-window.onload = function() {
-  countLoggedUsers();
+window.onload = function () {
+    countLoggedUsers();
 };
-
-
-
-
 
 document.getElementById("navIcon").addEventListener("click", function() {
   const navbar = document.getElementById("navbar");
@@ -131,7 +114,4 @@ document.getElementById("navIcon").addEventListener("click", function() {
     
   }
 });
-
-
-  
 

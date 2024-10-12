@@ -29,9 +29,11 @@ body,input{
   
 }
 
+
+
 .transform{
   transform: translateX(100%);
-  transition: 0.5s;
+  transition: 0.2s;
   z-index: 1000;
 }
 

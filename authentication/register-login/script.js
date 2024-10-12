@@ -29,11 +29,24 @@ signUpForm.addEventListener('submit', (e) => {
     // Check if all fields are filled
     if (name && email && password && password2 && role && role !== "Choose a role") {
         // Check if passwords match
-        if (password === password2) {
+        if (password === password2 && role !== "admin") {
             const user = { name, email, password, role };
-            localStorage.setItem(name, JSON.stringify(user)); // Save user data to localStorage
+            localStorage.setItem(email, JSON.stringify(user)); // Save user data to localStorage
             alert("Sign up successful! You can now sign in.");
             container.classList.remove("sign-up-mode"); // Switch to sign-in form
+        } else if (password === password2 && role === "admin") {
+            // Handle admin sign-up with special validation
+            document.querySelector('.container').classList.add('blurred');
+            fetch('/school-management/authentication/prompt/index2.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('modalOverlay').innerHTML = data;
+                    setTimeout(() => {
+                        document.querySelector('.modal-overlay').classList.add('transform');
+                    }, 100);
+                });
+
+               
         } else {
             alert("Passwords do not match!");
         }
@@ -42,87 +55,59 @@ signUpForm.addEventListener('submit', (e) => {
     }
 });
 
-/// Modify login logic to update counts when a user logs in
+// Sign In form submission logic
 signInForm.addEventListener('submit', (e) => {
     e.preventDefault();
-  
+    
     const email = signInForm.querySelector("#signInName").value;
     const inpassword = signInForm.querySelector("#signInPassword").value;
-  
+    
     const storedUser = localStorage.getItem(email);
-  
+
     if (storedUser) {
-      const user = JSON.parse(storedUser);
-  
-      if (user.password === inpassword) {
-        const userD = {
-          username: user.name, 
-          role: user.role      
-       };
+        const user = JSON.parse(storedUser);
 
-        switch (user.role) {
-          case "student":
-            alert("Login successful!");
-            
-            
-           
+        if (user.password === inpassword) {
+            const userD = { username: user.name, role: user.role };
 
-            localStorage.setItem('userInfo', JSON.stringify(userD))
+            // Store user info in localStorage and redirect based on role
+            localStorage.setItem('userInfo', JSON.stringify(userD));
 
-
-            window.location.href = "/school-management/modules/student/dashboard.html";
-            break;
-          case "staff":
-            alert("Login successful!");
-
-            
-
-            localStorage.setItem('userInfo', JSON.stringify(userD))
-
-            window.location.href = "/school-management/modules/staff/dashboard.html";
-            break;
-
-
-
-
-          case "admin":
-
-          localStorage.setItem('userInfo', JSON.stringify(userD))
-
-            document.querySelector('.container').classList.add('blurred');
-            fetch('/school-management/authentication/prompt/index.html')
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.text();
-              })
-              .then(data => {
-                document.getElementById('modalOverlay').innerHTML = data;
-                setTimeout(() => {
-                  document.querySelector('.modal-overlay').classList.add('transform');
-                }, 20);
-
-                
-
-              });
-            break;
-          default:
-            alert("Role not recognized. Please contact support.");
+            switch (user.role) {
+                case "student":
+                    alert("Login successful!");
+                    window.location.href = "/school-management/modules/student/dashboard.html";
+                    break;
+                case "staff":
+                    alert("Login successful!");
+                    window.location.href = "/school-management/modules/staff/dashboard.html";
+                    break;
+                case "admin":
+                    document.querySelector('.container').classList.add('blurred');
+                    fetch('/school-management/authentication/prompt/index1.html')
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('modalOverlay').innerHTML = data;
+                            setTimeout(() => {
+                                document.querySelector('.modal-overlay').classList.add('transform');
+                            }, 20);
+                        });
+                    break;
+                default:
+                    alert("Role not recognized. Please contact support.");
+            }
+        } else {
+            alert("Incorrect password!");
         }
-  
-        // Update the counts after login
-        countLoggedUsers();
-      } else {
-        alert("Incorrect password!");
-      }
     } else {
-      alert("User not found! Please sign up first.");
+        alert("User not found! Please sign up first.");
     }
-  });
-  
-  
-  
-  
-  
-   
+});
+
+// Redirect user to login page if not authenticated (to be used on dashboard pages)
+document.addEventListener('DOMContentLoaded', function () {
+    const userInfo = localStorage.getItem('userInfo');
+    if (!userInfo) {
+        window.location.href = "/school-management/authentication/register-login/index.html";
+    }
+});

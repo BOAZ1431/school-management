@@ -72,29 +72,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-// Function to count logged-in users by role
 function countLoggedUsers() {
   let studentCount = 0;
   let adminCount = 0;
   let staffCount = 0;
 
-  // Loop through localStorage to count roles
+  // Loop through localStorage to count roles only from keys that start with "user_"
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-    const user = JSON.parse(localStorage.getItem(key));
 
-    if (user && user.role) {
-      switch (user.role) {
-        case "student":
-          studentCount++;
-          break;
-        case "admin":
-          adminCount++;
-          break;
-        case "staff":
-          staffCount++;
-          break;
+    // Only process keys that start with "user_"
+    if (!key.startsWith("user")) {
+      const user = JSON.parse(localStorage.getItem(key));
+
+      if (user && user.role) {
+        switch (user.role) {
+          case "student":
+            studentCount++;
+            break;
+          case "admin":
+            adminCount++;
+            break;
+          case "staff":
+            staffCount++;
+            break;
+        }
       }
     }
   }
@@ -109,6 +111,9 @@ function countLoggedUsers() {
 window.onload = function() {
   countLoggedUsers();
 };
+
+
+
 
 
 
