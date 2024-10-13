@@ -15,14 +15,15 @@ body,input{
 
 .modal-overlay {
   position: fixed;
-  top: 0;
+  top: 20px;
   left: -100%;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center; 
-  z-index: 1000;
+  z-index: 100;
+  
   
   
   
@@ -33,6 +34,10 @@ body,input{
   transform: translateX(100%);
   transition: 0.5s;
   z-index: 1000;
+}
+
+.reduceheight{
+  height: 400px;
 }
 
 /* Modal box */
@@ -116,5 +121,7 @@ input:focus{
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
+
 
 

@@ -6,8 +6,8 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Login</title>
-  <link rel="stylesheet" href="/school-management/authentication/styles/style.css">
   <link rel="stylesheet" href="/school-management/authentication/prompt/style.css">
+  <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
 
@@ -81,7 +81,7 @@
           
           <div class="input-field">
             <i class='bx bxs-user'></i>
-            <input type="text" name="text" id="signUpUsername" placeholder="Full Name">
+            <input type="text" name="text" id="signUpUsername" placeholder="Full Name"required>
           </div>
 
           <div class="input-field">
@@ -98,19 +98,19 @@
 
           <div class="input-field">
             <i class='bx bxs-envelope'></i>
-            <input type="text" name="text" id="signUpEmail" placeholder="example@st.oceanland.edu.gh">
+            <input type="text" name="text" id="signUpEmail" placeholder="example@st.oceanland.edu.gh" required>
           </div>
 
           
 
           <div class="input-field">
             <i class='bx bxs-lock-alt'></i>
-            <input type="password" name="password" id="signUpPassword" placeholder="Enter Password">
+            <input type="password" name="password" id="signUpPassword" placeholder="Enter Password" required>
           </div>
 
           <div class="input-field">
             <i class='bx bxs-lock-alt'></i>
-            <input type="password" name="password" id="signUpConfirmPassword" placeholder="Confirm Password">
+            <input type="password" name="password" id="signUpConfirmPassword" placeholder="Confirm Password" required>
           </div>
           <div class="btn-container">
             <input type="submit" value="Sign Up" class="btn">
