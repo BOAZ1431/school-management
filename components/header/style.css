@@ -18,7 +18,7 @@ body,input{
 
 header{
   padding: 0 2rem;
-  background-color:rgb(20, 160, 148);
+  background-image:linear-gradient(120deg,rgb(19, 172, 172),rgb(99, 186, 186));
   position:fixed;
   top: 0;
   left: 0;
@@ -85,7 +85,7 @@ header button{
 .user{
   height: 75px;
   display: flex;
-  background-color: #8241c44f;
+  background-color: #efecf14f;
   backdrop-filter: blur (4px);
   align-items: center;
   border-radius: 10px;
@@ -105,30 +105,33 @@ header button{
   
   padding-left: 8px;
   display: flex;
-  width:180px ;
+  width:220px ;
 }
 ul{
   list-style: none;
 }
 
 .username{
-  font-size:21px;
+  font-size:18px;
   font-weight: 500;
   padding: 1px 10px 1px 5px;
-  background-color: rgba(243, 243, 233, 0.262);
-  border-radius: 2px;
+  background-color: rgba(3, 4, 20, 0.205);
+  border: 3px double #fff;
+  border-radius: 8px;
   backdrop-filter:blur(2px);
-  margin: 2px;
+  margin: 4px;
 }
 
 .user-role{
-  color: rgb(245, 231, 220);
-  font-size: 14px;
+  color: rgb(249, 245, 245);
+  font-size: 16px;
+  font-weight: 500;
   padding: 1px 10px 1px 5px;
-  background-color: rgba(3, 4, 20, 0.205);
+  
   border-radius: 2px;
   backdrop-filter:blur(2px);
-  margin: 2px;
+  margin: 2px 5px;
+  
   
 }
 

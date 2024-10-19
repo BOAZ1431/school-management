@@ -1,145 +1,72 @@
-function submitCode() {
-  // Predefined valid admin code (for demonstration purposes)
-  const validCode = "ADMIN123"; 
-  
-  
-  
-  // Get the entered code from the input field
-  const enteredCode = document.getElementById('verificationCode').value;
-  
-  // Get the message element to show feedback
-  const messageElement = document.getElementById('message');
-  
-  // Check if the entered code matches the valid code
-  if (enteredCode === validCode ) {
-      
-        
-    messageElement.textContent = "Please Wait";
-    setTimeout(()=>{
-      messageElement.textContent = "Access Granted! Welcome Administrator!";
-      messageElement.style.textAlign = "center";
-      
-    },1000);
-
-   
-    
-    messageElement.style.color = "green"
-    messageElement.style.fontSize = "16px"
-    setTimeout(() => {
-      window.location.href = '/school-management/modules/admin/dashboard.html';
-    },3000); 
-
-  }
-  
-    else {
-    messageElement.textContent = "Invalid Code. Please try again.";
-    
-  }
-}
-
-
-
-const isLoggedIn = false;
-
-
-
-
-function signUpCode() {
-  // Predefined valid admin code (for demonstration purposes)
-  const getIncode = "FRESHSTART"; 
-
-  // Get the entered code from the input field
-  const enterCode = document.getElementById('verificationCode').value;
-  
-  // Get the message element to show feedback
-  const messageElement = document.getElementById('message');
-  
-  // Check if the entered code matches the valid code
-  if (enterCode === getIncode ) {
-    const name = signUpForm.querySelector("#signUpUsername").value.trim(); // Trim to remove extra spaces
-    const email = signUpForm.querySelector("#signUpEmail").value.trim().toLowerCase(); // Make case-insensitive
-    const password = signUpForm.querySelector("#signUpPassword").value;
-    const password2 = signUpForm.querySelector("#signUpConfirmPassword").value;
-    const role = signUpForm.querySelector("#role").value;
-
-
-     
-        
-    const user = { name, email, password, role,isLoggedIn };
-    localStorage.setItem(name, JSON.stringify(user));
-
-
-    messageElement.textContent = "Please Wait";
-    setTimeout(()=>{
-      messageElement.textContent = "Access Granted! Moving to Sign In";
-      messageElement.style.textAlign = "center";
-      
-    },1000);
-    
-    messageElement.style.color = "green"
-    messageElement.style.fontSize = "16px"
-    setTimeout(() => {
-      window.location.href = '/school-management/authentication/register-login/index.html';
-    },3000); 
-
-
-
-  }
-  
-    else {
-    messageElement.textContent = "Invalid Code. Please try again.";
-    
-  }
-}
-
-
-// Function to handle user logout
+/// Function to handle user logout
 function logout() {
-  // Retrieve the current username from localStorage or from the user info stored earlier
-  const allKeys = Object.keys(localStorage);
-  let username = null;
+    let username = null;
 
+    // Find the logged-in user by checking if 'isLoggedIn' is true in localStorage
+    const allKeys = Object.keys(localStorage);
+    for (let key of allKeys) {
+        const storedUser = JSON.parse(localStorage.getItem(key));
+        if (storedUser && storedUser.isLoggedIn === true) {
+            username = key;  // This is the logged-in user's username
+            break;
+        }
+    }
 
-  const storedName = localStorage.getItem('name');
+    // If a logged-in user is found, update their 'isLoggedIn' status
+    if (username) {
+        const user = JSON.parse(localStorage.getItem(username));
+        user.isLoggedIn = false;  // Set 'isLoggedIn' to false
 
-  // Find the username from localStorage
-  for (let key of allKeys) {
-      if (key.includes('userInfo')) {
-          const userInfo = JSON.parse(localStorage.getItem(key));
-          username = userInfo.username; // Get the username of the logged-in user
-          break;
-      }
-  }
+        // Update localStorage with the new state
+        localStorage.setItem(username, JSON.stringify(user));
 
-  // Check if the username was found
-  if (username) {
-    
-    
+        console.log(`User ${username} has been logged out, 'isLoggedIn' set to false.`);
+    } else {
+        console.error("No logged-in user found.");
+    }
 
-
-      // Remove the specific user's info from localStorage
-      localStorage.removeItem(username + 'userInfo'); // Remove the user info
-      console.log(`User ${username} has been logged out and removed from localStorage.`); // Debugging line
-  } else {
-      console.error("No user information found in localStorage."); // Debugging line
-  }
-
-  // Redirect to the sign-in page
-  window.location.href = '/school-management/authentication/register-login/index.html';
+    // Redirect to the sign-in page
+    window.location.href = '/school-management/authentication/register-login/index.html';
 }
 
 // Function to redirect the user back to the dashboard
 function stay() {
-  // Redirect the user back to the admin dashboard
-  window.location.href = '/school-management/modules/admin/dashboard.html';
+    let username = null;
+
+    // Find the logged-in user by checking if 'isLoggedIn' is true in localStorage
+    const allKeys = Object.keys(localStorage);
+    for (let key of allKeys) {
+        const storedUser = JSON.parse(localStorage.getItem(key));
+        if (storedUser && storedUser.isLoggedIn === true) {
+            username = key;  // This is the logged-in user's username
+            break;
+        }
+    }
+
+    // Check if the username was found and redirect to the appropriate dashboard based on the user's role
+    if (username) {
+        const storedUser = JSON.parse(localStorage.getItem(username));
+        if (storedUser && storedUser.isLoggedIn) {
+            switch (storedUser.role) {
+                case "student":
+                    window.location.href = "/school-management/modules/student/dashboard.html";
+                    break;
+                case "staff":
+                    window.location.href = "/school-management/modules/staff/dashboard.html";
+                    break;
+                case "admin":
+                    window.location.href = "/school-management/modules/admin/dashboard.html";
+                    break;
+                default:
+                    alert("Role not recognized. Please contact support.");
+                    window.location.href = "/school-management/authentication/register-login/index.html";
+            }
+        } else {
+            alert("You are not logged in. Please sign in again.");
+            window.location.href = "/school-management/authentication/register-login/index.html";
+        }
+    } else {
+        alert("Session expired. Please sign in again.");
+        window.location.href = '/school-management/authentication/register-login/index.html';
+    }
 }
-
-
-
-
-
-
-
-
-
-

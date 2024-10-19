@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/school-management/components/nav bar/style.css">
   <link rel="stylesheet" href="../styles/style.css">
   <link rel="stylesheet" href="/school-management/authentication/prompt/style.css">
-  <title>Admin Dashboard</title>
+  <title>Staff Dashboard</title>
 </head>
 
 <body>
@@ -19,17 +19,15 @@
   </div>
 
   <!-- Navigation Bar -->
-  <div class="navbar" id="navbar">
+  <div class="navbar" id="navBar">
     <!-- Links will be dynamically loaded -->
   </div> 
 
-  <div id="modalOverlay" >
-
-  </div>
+  
 
   <!-- Page Interface -->
   <div class="page-interface" >
-    <button class="nav-icon" id="navIcon" type="submit"><i class="fa-solid fa-bars"></i></button>
+    <button class="nav-icon" id="navIcon" type="submit"><i class="fa-solid fa-bars" id="navic"></i></button>
 
     <!-- New Parent Container for the Dashboard and Write-up -->
     <div class="dashboard-container">
@@ -37,35 +35,36 @@
       <!-- Admin Dashboard (Left Side) -->
       <div class="admin-dashboard">
         <div class="welcome-note">
-          <h1>Welcome <h1 id="admName"></h1></h1>
-          <p>Here is an overview of the students and staffs data.</p>
+          <h1>Welcome,Staff!<h1 id="staffmName"></h1></h1>
+          <p>Here is an overview of the school’s data.</p>
         </div>
 
         <div class="tag-bar">
-        
+          <!-- Students Tag -->
           <div class="tag student-tag">
             <h2><i class="fas fa-user-graduate"></i> Students</h2>
             <p id="studentCount">0</p>
           </div>
-
+          <!-- Staff Tag -->
           <div class="tag staff-tag">
             <h2><i class="fas fa-chalkboard-teacher"></i> Staff</h2>
             <p id="staffCount">0</p>
           </div>
+         
         
-          
+          <!-- Classes Tag -->
           <div class="tag classes-tag">
             <h2><i class="fas fa-school"></i> Classes</h2>
             <p id="classCount">0</p>
           </div>
-          
+          <!-- Reports Tag -->
           <div class="tag reports-tag">
             <h2><i class="fas fa-file-alt"></i> Reports</h2>
             <p id="reportCount">0</p>
           </div>
         </div>
 
-        
+        <!-- Placeholder for graphs/charts -->
         <div class="chart-container">
           <canvas id="enrollmentChart"></canvas>
         </div>
@@ -73,37 +72,16 @@
         <!-- Additional Action Buttons -->
         <div class="action-buttons">
           <button class="action-btn" id="generateReport">Generate Report</button>
-        
+          <button class="action-btn" id="manageUsers">Manage Users</button>
         </div>
       </div>
 
-      <!-- Write-up Section (Right Side) -->
-      <div class="write-up-section">
-        <div class="section">
-          <h2><i class="fas fa-bullhorn"></i> School Updates & News</h2>
-          <p>Stay informed about the latest happenings at the school. From student achievements to upcoming events, this section will provide a brief overview.</p>
-        </div>
-
-        <div class="section">
-          <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
-          <ul>
-            <li>Parent-Teacher Meeting - October 25, 2024</li>
-            <li>School Science Fair - November 15, 2024</li>
-            <li>End of Term Exams - December 10, 2024</li>
-          </ul>
-        </div>
-
-        <div class="section">
-          <h3><i class="fas fa-exclamation-circle"></i> Important Notices</h3>
-          <p>Make sure to keep track of the latest updates from the administration regarding new school policies, changes in schedules, and more.</p>
-        </div>
-      </div>
       
     </div> <!-- End of dashboard-container -->
     
   </div>
 
-  <script src="../Java/script-ad.js"></script>
+  <script src="../Java/staff-dashboard.js"></script>
   <script src="/school-management/authentication/prompt/script.js"></script>
 </body>
 </html>

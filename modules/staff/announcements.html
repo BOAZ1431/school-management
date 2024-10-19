@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/school-management/components/header/style.css">
+  <link rel="stylesheet" href="/school-management/components/nav bar/style.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/ann-staff.css"> <!-- Include your CSS -->
+  <title>Staff Announcements</title>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header" id="header"></div>
+
+  <!-- Navigation Bar -->
+  <div class="nav-bar" id="navBar"></div>
+
+  
+
+  <!-- Page Interface -->
+  
+  <div class="page-interface">
+   
+    <button class="nav-icon" id="navIcon" type="submit" onclick="navclick()">
+      <i class="fa-solid fa-bars" id="navic"></i>
+    </button>
+
+    <div class="crud-container-staff">
+      <h1>Staff Announcement Management</h1>
+    
+      <!-- Form for creating and updating announcements -->
+      <div class="form-section">
+        <h2>Create / Edit Announcement (Staff)</h2>
+        <form id="staffAnnouncementForm">
+          <label for="staffAnnouncementTitle">Title:</label>
+          <input type="text" id="staffAnnouncementTitle" placeholder="Enter Title" required>
+    
+          <label for="staffAnnouncementContent">Content:</label>
+          <textarea id="staffAnnouncementContent" placeholder="Enter Content" required></textarea>
+    
+          <label for="staffAnnouncementCategory">Category:</label>
+          <select id="staffAnnouncementCategory" required>
+            <option value="">Select Category</option>
+            <option value="Event">Event</option>
+            <option value="Notice">Notice</option>
+            <option value="School Update">School Update</option>
+          </select>
+    
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    
+      <!-- Displaying Announcements (Read and Edit Only, No Delete) -->
+      <div class="announcement-list">
+        <h2>Your Announcements</h2>
+        <ul id="staffAnnouncementList">
+          <!-- Announcements will be dynamically loaded here -->
+        </ul>
+      </div>
+    </div>
+    
+
+  </div>
+
+    
+
+   
+  </div>
+
+  <script src="../Java/staff-dashboard.js"></script>
+  <script src="/school-management/authentication/prompt/script.js"></script>
+  <script src="../Java/announc-staff.js"></script>
+</body>
+</html>
