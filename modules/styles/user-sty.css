@@ -54,6 +54,15 @@ body {
 }
 
 
+.blurred {
+  filter: blur(10px);
+  z-index: 900;
+}
+
+.reduceheight{
+  height: 400px;
+}
+
 .container {
   position: relative;
   margin: 10px;
@@ -69,7 +78,7 @@ body {
   
 }
 
-/* Targeting all elements inside .container */
+
 .container * {
   font-size: 1rem;
 }
@@ -121,7 +130,7 @@ body {
   margin-top: 50px;
 }
 
-/* Sections for student and staff management */
+
 .container .management-section {
 
   margin-bottom: 50px;
@@ -136,7 +145,7 @@ body {
 
 }
 
-/* Forms inside the .container */
+
 .container form {
   display: flex;
   flex-direction: row;
@@ -218,7 +227,7 @@ body {
 .container button.delete:active{
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.266);
 }
-/* Tables inside the .container */
+
 .container table {
  
   border-collapse: collapse;
@@ -252,7 +261,7 @@ body {
   gap: 10px;
 }
 
-/* Buttons for edit and delete actions */
+
 .container button.edit {
   background-color: #007bff;
 }
@@ -271,7 +280,7 @@ body {
   
 }
 
-/* Profile image styling in table */
+
 .container table img {
   width: 60px;
   height: 60px;

@@ -1,21 +1,21 @@
-// Utility function to get users from localStorage
+
 function getUsers() {
     return JSON.parse(localStorage.getItem('users')) || [];
 }
 
-// Fetch and inject the header with user info
+
 fetch('/school-management/components/header/index.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('header').innerHTML = data;
-        loadCurrentUserInfo(); // Load current user info
+        loadCurrentUserInfo(); 
     })
     .catch(error => console.error('Error loading header HTML:', error));
 
-// Function to load current user info
+
 function loadCurrentUserInfo() {
-    const users = getUsers(); // Get all users from localStorage
-    const currentUser = users.find(user => user.isLoggedIn === true && user.role === 'staff'); // Find logged-in user
+    const users = getUsers(); 
+    const currentUser = users.find(user => user.isLoggedIn === true && user.role === 'staff'); 
 
     if (currentUser) {
         displayUserInfo(currentUser);
@@ -44,13 +44,13 @@ function redirectToLogin() {
     window.location.href = '/school-management/authentication/register-login/index-user.html';
 }
 
-// Function to count logged-in users by role and update DOM
+// Function to count logged-in users by role
 function countLoggedUsers() {
-    const users = getUsers(); // Get all users from localStorage
+    const users = getUsers(); 
     let studentCount = 0;
     let staffCount = 0;
 
-    // Loop through users to count roles where isLoggedIn is true
+   //loop to count logged in users(isLoggedin=true)
     users.forEach(userInfo => {
         if (userInfo.isLoggedIn === true) {
             switch (userInfo.role) {
@@ -67,8 +67,8 @@ function countLoggedUsers() {
     // Update the DOM with the counts (add dynamic counts if needed)
     document.getElementById("studentCount").textContent = studentCount;
     document.getElementById("staffCount").textContent = staffCount;
-    document.getElementById("classCount").textContent = 0;  // Static count for classes (example)
-    document.getElementById("reportCount").textContent = 0;  // Static count for reports (example)
+    document.getElementById("classCount").textContent = 0;  // 
+    document.getElementById("reportCount").textContent = 0;  // 
 
     // Display logged-in users
     displayLoggedInUsers(users); // Pass users array to the display function
@@ -88,12 +88,12 @@ function displayLoggedInUsers(users) {
     });
 }
 
-// Call the count function on page load
+
 window.onload = function() {
     countLoggedUsers();
 };
 
-// Fetch and inject the navbar based on the user's role (assumed student role here)
+
 fetch('/school-management/components/nav bar/index-staff.html')
     .then(response => response.text())
     .then(data => {
@@ -101,33 +101,35 @@ fetch('/school-management/components/nav bar/index-staff.html')
     })
     .catch(error => console.error('Error loading navbar HTML:', error));
 
-// Toggle navigation visibility
+// Toggle navigation visibility..
 document.getElementById("navIcon").addEventListener("click", function() {
     const navbar = document.getElementById("navBar");
+    const navIcon = document.getElementById("navic"); 
 
-    // Toggle the 'hidden' class to show or hide the div
-    if (navbar.classList.contains("navbar")) {
-        setTimeout(() => {
-            navbar.classList.remove("navbar");
-        }, 200);
+    
+    navbar.classList.toggle("visible");
+
+  
+    if (navIcon.classList.contains("fa-bars")) {
+        navIcon.classList.remove("fa-bars");  
+        navIcon.classList.add("fa-times");   
     } else {
-        setTimeout(() => {
-            navbar.classList.add("navbar");
-        }, 200);
+        navIcon.classList.remove("fa-times"); 
+        navIcon.classList.add("fa-bars");     
     }
 });
 
-// Logout functionality
-function logOutAcc() {
-    const users = getUsers(); // Get all users from localStorage
-    const currentUser = users.find(user => user.isLoggedIn === true); // Find the logged-in user
 
+ //logout func.
+function logOutAcc() {
+    const users = getUsers(); 
+    const currentUser = users.find(user => user.isLoggedIn === true); 
     if (currentUser) {
-        currentUser.isLoggedIn = false; // Set isLoggedIn to false
-        localStorage.setItem('users', JSON.stringify(users)); // Save back to localStorage
+        currentUser.isLoggedIn = false; 
+        localStorage.setItem('users', JSON.stringify(users)); 
 
         alert("You have successfully logged out.");
-        ; // Redirect to login page
+        redirectToLogin(); 
     } else {
         alert('Inappropriate action detected');
         redirectToLogin();

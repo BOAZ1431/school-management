@@ -1,21 +1,21 @@
-// Utility function to get users from localStorage
+
 function getUsers() {
     return JSON.parse(localStorage.getItem('users')) || [];
 }
 
-// Fetch and inject the header with user info
+
 fetch('/school-management/components/header/index.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('header').innerHTML = data;
-        loadCurrentUserInfo(); // Load current user info
+        loadCurrentUserInfo(); 
     })
     .catch(error => console.error('Error loading header HTML:', error));
 
-// Function to load current user info
+
 function loadCurrentUserInfo() {
-    const users = getUsers(); // Get all users from localStorage
-    const currentUser = users.find(user => user.isLoggedIn === true && user.role === 'student'); // Find logged-in user
+    const users = getUsers(); 
+    const currentUser = users.find(user => user.isLoggedIn === true && user.role === 'student'); 
 
     if (currentUser) {
         displayUserInfo(currentUser);
@@ -46,7 +46,7 @@ function redirectToLogin() {
 
 // Function to count logged-in users by role and update DOM
 function countLoggedUsers() {
-    const users = getUsers(); // Get all users from localStorage
+    const users = getUsers(); 
     let studentCount = 0;
     let staffCount = 0;
 
@@ -66,8 +66,8 @@ function countLoggedUsers() {
 
     // Update the DOM with the counts (add dynamic counts if needed)
     document.getElementById("studentCount").textContent = studentCount;
-    document.getElementById("classCount").textContent = 0;  // Static count for classes (example)
-    document.getElementById("reportCount").textContent = 0;  // Static count for reports (example)
+    document.getElementById("classCount").textContent = 0;  
+    document.getElementById("reportCount").textContent = 0;  
 
     // Display logged-in users
     displayLoggedInUsers(users); // Pass users array to the display function
@@ -76,7 +76,7 @@ function countLoggedUsers() {
 // Function to display logged-in users' names and roles
 function displayLoggedInUsers(users) {
     const userListElement = document.getElementById('loggedInUsers'); // Ensure this element exists in your HTML
-    userListElement.innerHTML = ""; // Clear previous entries
+    userListElement.innerHTML = ""; 
 
     users.forEach(userInfo => {
         if (userInfo.isLoggedIn === true) {
@@ -103,36 +103,38 @@ fetch('/school-management/components/nav bar/index-student.html')
 // Toggle navigation visibility
 document.getElementById("navIcon").addEventListener("click", function() {
     const navbar = document.getElementById("navBar");
+    const navIcon = document.getElementById("navic"); // Icon inside the button
 
-    // Toggle the 'hidden' class to show or hide the div
-    if (navbar.classList.contains("navbar")) {
-        setTimeout(() => {
-            navbar.classList.remove("navbar");
-        }, 200);
+    
+    navbar.classList.toggle("visible");
+
+   
+    if (navIcon.classList.contains("fa-bars")) {
+        navIcon.classList.remove("fa-bars"); 
+        navIcon.classList.add("fa-times");   
     } else {
-        setTimeout(() => {
-            navbar.classList.add("navbar");
-        }, 200);
+        navIcon.classList.remove("fa-times"); 
+        navIcon.classList.add("fa-bars");     
     }
 });
 
+
 // Logout functionality
 function logOutAcc() {
-    const users = getUsers(); // Get all users from localStorage
-    const currentUser = users.find(user => user.isLoggedIn === true); // Find the logged-in user
+    const users = getUsers(); 
+    const currentUser = users.find(user => user.isLoggedIn === true); 
 
     if (currentUser) {
-        currentUser.isLoggedIn = false; // Set isLoggedIn to false
-        localStorage.setItem('users', JSON.stringify(users)); // Save back to localStorage
+        currentUser.isLoggedIn = false; 
+        localStorage.setItem('users', JSON.stringify(users));
 
         alert("You have successfully logged out.");
-        ; // Redirect to login page
+       redirectToLogin() ;
     } else {
         alert('Inappropriate action detected');
         redirectToLogin();
     }
 }
-
 
 
 
@@ -166,13 +168,15 @@ function loadAnnouncements() {
     const noticeList = [
         document.getElementById('notice1'),
         document.getElementById('notice2'),
-        document.getElementById('enotice3')
+        document.getElementById('notice3'),
+        document.getElementById('notice4')
+
     ];
 
     // Clear previous entries
-    updateNewsList.forEach(li => li.textContent = '');
-    eventList.forEach(li => li.textContent = '');
-    noticeList.forEach(li => li.textContent = '');
+    updateNewsList.forEach(li => li.innerHTML = ''); // Use innerHTML to allow HTML content
+    eventList.forEach(li => li.innerHTML = '');
+    noticeList.forEach(li => li.innerHTML = '');
 
     announcements.forEach(announcement => {
         // Categorize based on the selected dropdown value
@@ -188,8 +192,8 @@ function loadAnnouncements() {
 
 function addAnnouncementToList(list, announcement) {
     for (let i = 0; i < list.length; i++) {
-        if (!list[i].textContent) { // Find the first empty spot
-            list[i].textContent = `${announcement.title}: ${announcement.content}`;
+        if (!list[i].innerHTML) { // Check for empty spot
+            list[i].innerHTML = `<strong>${announcement.title}</strong>: ${announcement.content}`; // Bold the title
             break;
         }
     }

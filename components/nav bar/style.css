@@ -12,15 +12,31 @@
 }
 
 
+/* Hide the navbar by default */
+#navBar {
+  display: none;
+}
+
+/* Show the navbar when the visible class is added */
+#navBar.visible {
+  display: block;
+}
+
+/* For smoother visibility transitions */
+#navBar {
+  transition: all 0.3s ease-in-out;
+}
+
+
 /* CSS for the sidebar */
 .side-nav {
-  background-image: linear-gradient(145deg,rgba(70, 162, 216, 0.4), rgba(85, 215, 211, 0.4) );
+  background-image: linear-gradient(145deg,rgba(233, 237, 240, 0.304), rgba(70, 91, 90, 0.4) );
   width: 250px;
-  top: 18vh;
-  left: 20px;
+  top: 19vh;
+  left: 12px;
   bottom: 10px;
   position: fixed;
-  padding: 30px 0 30px 15px;
+  padding: 30px 5px 30px 15px;
   backdrop-filter: blur(5px);
   display: flex;
   justify-content: space-between;
@@ -79,21 +95,24 @@
 }
 
 .side-nav ul li a:hover,
-.logout-tag:hover{
+.logout-tag:hover {
   color: rgb(8, 8, 48);
-  background-color:transparent;
-  border: 3px solid white;
+  background-color: transparent;
+  background-color: #ffffff4a;
+  
+  border-left:none;
+  border-top: 4px double white;
+  border-bottom: 4px double white;
   border-right: none;
-  border-top-left-radius:12px ;
-  border-bottom-left-radius:12px ;
+  border-radius: 12px;
   
 }
 
 .side-nav ul li a:hover i,
-.logout-tag:hover i{
+.logout-tag:hover i {
   color: rgb(8, 8, 48);
-
 }
+
 
 
 

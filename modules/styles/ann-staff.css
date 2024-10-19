@@ -5,18 +5,17 @@
 
 
 
-/* Container for the staff CRUD section */
 .crud-container-staff {
-  width: 90%;
+  width: 99%;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f9fa;
+  background-image: linear-gradient(to right, rgba(13, 242, 219, 0.345),rgba(0, 173, 248, 0.35),rgba(58, 34, 238, 0.367), rgba(121, 33, 228, 0.3));
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
-/* Heading for staff CRUD section */
+
 .crud-container-staff h1 {
   font-size: 2rem;
   text-align: center;
@@ -24,9 +23,9 @@
   margin-bottom: 20px;
 }
 
-/* Form section styling */
+
 .crud-container-staff .form-section {
-  background-color: #ffffff;
+  background-color: #ffffff99;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -34,35 +33,36 @@
   transition: all 0.3s ease;
 }
 
-/* Form section header */
+
 .crud-container-staff .form-section h2 {
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: #007bff;
 }
 
-/* Form labels */
+
 .crud-container-staff label {
   display: block;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 5px;
+  margin-left: 5px;
   color: #333;
 }
 
-/* Form inputs */
+
 .crud-container-staff input[type="text"],
 .crud-container-staff textarea,
 .crud-container-staff select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px inset #ccc;
   border-radius: 5px;
   font-size: 1rem;
   margin-bottom: 15px;
   transition: border-color 0.3s ease;
 }
 
-/* Input focus styles */
+
 .crud-container-staff input[type="text"]:focus,
 .crud-container-staff textarea:focus,
 .crud-container-staff select:focus {
@@ -70,7 +70,7 @@
   outline: none;
 }
 
-/* Submit button styling */
+
 .crud-container-staff button[type="submit"] {
   display: inline-block;
   padding: 10px 15px;
@@ -79,15 +79,15 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.7s ease;
 }
 
-/* Submit button hover effect */
+
 .crud-container-staff button[type="submit"]:hover {
-  background-color: #218838;
+  background-color: #11a56a;
 }
 
-/* Announcement list styling */
+
 .crud-container-staff .announcement-list {
   background-color: #ffffff;
   padding: 15px;
@@ -95,14 +95,14 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Announcement list header */
+
 .crud-container-staff .announcement-list h2 {
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: #333;
 }
 
-/* Announcement list items */
+
 .crud-container-staff ul {
   list-style-type: none;
   padding: 0;
@@ -114,12 +114,16 @@
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   margin-bottom: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease,transform 0.5s ease-in-out;
 }
 
-/* Announcement list items hover effect */
+
+
+
 .crud-container-staff ul li:hover {
   background-color: #e9ecef;
+  transform: translateX(5px);
+
 }
 
 /* Edit button inside the list */
@@ -131,11 +135,12 @@
   border-radius: 5px;
   cursor: pointer;
   float: right;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
 }
 
 /* Edit button hover effect */
 .crud-container-staff .edit:hover {
   background-color: #0056b3;
+  zoom: 1.05;
 }
 

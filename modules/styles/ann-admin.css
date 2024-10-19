@@ -8,7 +8,7 @@ body {
   font-family: "Roboto", "Poppins",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f9;
   margin: 0;
-  padding: 20px;
+  padding: 5px 10px ;
 }
 
 
@@ -17,9 +17,11 @@ body {
 
 .crud-container {
   position: relative;
+  
   background-image: linear-gradient(to right,rgba(112, 13, 199, 0.4),rgba(46, 11, 200, 0.4));
-  width:96%;
+  width:100%;
   margin: 0 auto;
+  border-radius: 14px;
   padding: 40px;
   animation: fadeIn 0.8s ease-in-out;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -41,81 +43,104 @@ body {
   transition: color 0.3s ease;
 }
 
-/* Hover effect for titles */
+
 .crud-container h1:hover, 
 .crud-container h2:hover {
   color: #007BFF;
 }
 
-/* Form Section inside .crud-container */
+
 .crud-container .form-section {
-  background-color: #ffffff;
+  background-color: #ffffff84;
   padding: 20px;
   border-radius: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Hover effect for the form section */
+
 .crud-container .form-section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 0 30px rgba(5, 27, 51, 0.403);
 }
 
-/* Form elements */
+
 .crud-container form {
   display: flex;
   flex-direction: column;
 }
 
-/* Form labels */
+
 .crud-container label {
   margin-bottom: 5px;
+  margin-left: 10px;
   font-weight: bold;
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
 }
 
-/* Input fields and select dropdown */
+
 .crud-container input[type="text"], 
 .crud-container textarea, 
 .crud-container select {
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px inset #ccccccdf;
   font-size: 16px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Focus effect for input and textarea */
-.crud-container input[type="text"]:focus, 
-.crud-container textarea:focus, 
+
+.crud-container input[type="text"]:focus,
+.crud-container textarea:focus,
 .crud-container select:focus {
-  border-color: #007BFF;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  border-color: #061def;
+  outline: none;
 }
 
-/* Submit button */
-.crud-container button {
+
+.crud-container .create {
   padding: 10px;
-  background-color: #007BFF;
+  align-self: center;
+  width: 50%;
+  background-image: linear-gradient(to right,rgb(58, 97, 93),rgb(24, 178, 147));
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Button hover effect */
-.crud-container button:hover {
-  background-color: #0056b3;
+  transition:box-shadow 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
 }
 
-/* Announcement list */
+
+.crud-container .create:hover {
+  animation: Slide 2s,hovering 1s ;
+  transition: background-image 0.5s ease-in-out,transform 0.5s ease-in-out;
+  animation-iteration-count: infinite;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+@keyframes Slide {
+  0% { background-image: linear-gradient(to right,rgb(72, 106, 102),rgb(24, 178, 147));  }
+  25% { background-image: linear-gradient(to right,rgb(54, 97, 93),rgb(69, 134, 121));  }
+  50% { background-image: linear-gradient(to right,rgb(43, 97, 93),rgb(66, 132, 125)); }
+  75% { background-image: linear-gradient(to right,rgb(32, 97, 93),rgb(58, 97, 93)); }
+  100% { background-image: linear-gradient(to right,rgb(21, 97, 93),rgb(58, 97, 93)); }
+
+  
+}
+
+@keyframes hovering {
+  0%{transform: translateY(-1px)}
+
+  100%{transform: translateY(2px);}
+  
+}
+
+
 .crud-container .announcement-list ul {
   list-style-type: none;
   padding: 0;
@@ -134,22 +159,23 @@ body {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Announcement hover effect */
+
 .crud-container .announcement-list li:hover {
   transform: translateX(10px);
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 0 15px rgba(16, 23, 30, 0.705);
 }
 
-/* Announcement content styles */
+
 .crud-container .announcement-list li strong {
   font-size: 18px;
   margin-right: 10px;
   transition: color 0.3s ease;
 }
 
-/* Edit and delete buttons */
+
 .crud-container .announcement-list button {
   padding: 5px 10px;
+  margin: 3px;
   background-color: #dc3545;
   color: white;
   border: none;
@@ -163,7 +189,7 @@ body {
   background-color: #314edd;
 }
 
-/* Button hover effects */
+
 .crud-container .announcement-list button:hover {
   transform: scale(1.1);
   background-color: #c82333;

@@ -30,6 +30,15 @@ body,input{
   
 }
 
+
+
+@keyframes hovering {
+  0%{transform: translateY(-4px)}
+
+  100%{transform: translateY(8px);}
+  
+}
+
 .transform{
   transform: translateX(100%);
   transition: 0.5s;
@@ -55,6 +64,8 @@ body,input{
   width: 400px;
   height: 600px;
   transition: 0.5s ease-in-out;
+  animation: hovering 3s ease-in-out;
+  animation-iteration-count: infinite;
   
   
 }
